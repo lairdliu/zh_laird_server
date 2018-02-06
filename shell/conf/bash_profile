@@ -1,0 +1,18 @@
+
+#export LANG=zh_CN.GBK
+resurt=/opt/uniway
+export CODEROOTDIR=$resurt
+export PATH=$PATH:$HOME/bin:$CODEROOTDIR/bin:$CODEROOTDIR/script
+export MAGIC_FILE_PATH=$CODEROOTDIR/lib/Magdir
+export LD_LIBRARY_PATH=$HOME/lib:/usr/lib/mysql/:$CODEROOTDIR/lib
+export VERSIONS=v3.2
+export LOGPATH=$CODEROOTDIR/log
+export ODLLOGPATH=$CODEROOTDIR/old_log
+export WORK_PATH=$CODEROOTDIR/workpath
+export WORK_PATH_TMP=$CODEROOTDIR/workpathtmp
+
+alias log="cd $LOGPATH"
+alias lib="cd $CODEROOTDIR/lib"
+alias src="cd $CODEROOTDIR/src"
+alias lsrc="cd $CODEROOTDIR/libsrc"
+alias bin="cd $CODEROOTDIR/bin"

@@ -1,0 +1,11 @@
+[Unit]
+SourcePath=/opt/uniway/etc/checkIsFistStart.sh
+After=adminserver.service 
+
+[Service]
+Type=oneshot
+ExecStart=/opt/uniway/etc/checkIsFistStart.sh
+
+[Install]
+WantedBy=multi-user.target
+

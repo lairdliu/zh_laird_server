@@ -1,0 +1,199 @@
+# v3.1.9
+[[versions]]
+    version = "3.1.9"
+    [[versions.modules]]
+        name = "uniway-bin" 
+        commit = "uniwayv3.1.9"
+        spec = "uniway/etc/uniway-bin.spec"
+        version = "3.1.9"
+
+# v3.1.10
+[[versions]]
+    version = "3.1.10"
+    [[versions.modules]]
+        name = "uniway-bin" 
+        commit = "uniwayv3.1.10"
+        spec = "uniway/etc/uniway-bin.spec"
+        version = "3.1.10"
+    [[versions.updates]]
+        target_version = "3.1.9"
+        new_version = "3.1.10"
+        modules = ["uniway-bin"]
+
+# SalesLicense
+[[versions]]
+    version = "SalesLicense"
+    [[versions.modules]]
+        name = "uniway-bin" 
+        commit = "dev-SalesLicense"
+        spec = "uniway/etc/uniway-bin.spec"
+        version = "SalesLicense"
+    [[versions.updates]]
+        target_version = "3.1.9"
+        new_version = "3.1.10"
+        modules = ["uniway-bin"]
+
+# v3.1.11
+[[versions]]
+    version = "3.1.11"
+    [[versions.modules]]
+        name = "uniway-bin" 
+        commit = "uniwayv3.1.11"
+        spec = "uniway/etc/uniway-bin.spec"
+        version = "3.1.11"
+    [[versions.updates]]
+        target_version = "3.1.10"
+        new_version = "3.1.11"
+        modules = ["uniway-bin"]
+
+# v3.2.1
+[[versions]]
+    version = "3.2.1"
+    [[versions.modules]]
+        name = "uniway-bin" 
+        commit = "v3.2.1"
+        spec = "uniway/etc/uniway-bin.spec"
+        version = "3.2.1"
+    [[versions.updates]]
+        target_version = "3.1.11"
+        new_version = "3.2.1"
+        modules = ["uniway-bin"]
+
+# v3.2.2
+[[versions]]
+    version = "3.2.2"
+    [[versions.modules]]
+        name = "uniway" 
+        commit = "v3.2.2"
+        spec = "uniway/etc/uniway.spec"
+        version = "3.2.2"
+    [[versions.updates]]
+        target_version = "3.2.1"
+        new_version = "3.2.2"
+        modules = ["uniway"]
+
+# v3.2.3
+[[versions]]
+    version = "3.2.3"
+    [[versions.modules]]
+        name = "uniway" 
+        commit = "v3.2.3"
+        spec = "uniway/etc/uniway.spec"
+        version = "3.2.3"
+    [[versions.updates]]
+        target_version = "3.2.2"
+        new_version = "3.2.3"
+        modules = ["uniway"]
+
+# v3.2.4
+[[versions]]
+    version = "3.2.4"
+    [[versions.modules]]
+        name = "uniway" 
+        commit = "v3.2.4"
+        spec = "uniway/etc/uniway.spec"
+        version = "3.2.4"
+    [[versions.updates]]
+        target_version = "3.2.3"
+        new_version = "3.2.4"
+        modules = ["uniway"]
+
+# v3.2.5
+[[versions]]
+    version = "3.2.5"
+    [[versions.modules]]
+        name = "uniway" 
+        commit = "v3.2.5"
+        spec = "uniway/etc/uniway.spec"
+        version = "3.2.5"
+    [[versions.updates]]
+        target_version = "3.2.4"
+        new_version = "3.2.5"
+        modules = ["uniway"]
+
+# v3.2.6
+[[versions]]
+    version = "3.2.6"
+    [[versions.modules]]
+        name = "uniway" 
+        commit = "v3.2.6"
+        spec = "uniway/etc/uniway.spec"
+        version = "3.2.6"
+    [[versions.updates]]
+        target_version = "3.2.5"
+        new_version = "3.2.6"
+        modules = ["uniway"]
+
+# v3.2.7
+[[versions]]
+    version = "3.2.7"
+    [[versions.modules]]
+        name = "uniway" 
+        commit = "v3.2.7"
+        spec = "uniway/etc/uniway.spec"
+        version = "3.2.7"
+    [[versions.updates]]
+        target_version = "3.2.6"
+        new_version = "3.2.7"
+        modules = ["uniway"]
+
+# winsec_v3.2.8v
+[[versions]]
+    version = "winsec-v3.2.8"
+    [[versions.modules]]
+        name = "uniway"
+        commit = "winsec-v3.2.8"
+        spec = "uniway/etc/uniway.spec"
+        version = "winsec_v3.2.8"
+
+# v3.2.8
+[[versions]]
+    version = "3.2.8"
+    [[versions.modules]]
+        name = "uniway"
+        commit = "v3.2.8"
+        spec = "uniway/etc/uniway.spec"
+        version = "3.2.8"
+    [[versions.updates]]
+        target_version = "3.2.7"
+        new_version = "3.2.8"
+        modules = ["uniway"]
+
+# v3.2.9
+[[versions]]
+    version = "3.2.9"
+    [[versions.modules]]
+        name = "uniway"
+        commit = "v3.2.9"
+        spec = "uniway/etc/uniway.spec"
+        version = "3.2.9"
+    [[versions.updates]]
+        target_version = "3.2.8"
+        new_version = "3.2.9"
+        modules = ["uniway"]
+
+# v3.2.10
+[[versions]]
+    version = "3.2.10"
+    [[versions.modules]]
+        name = "uniway"
+        commit = "v3.2.10"
+        spec = "uniway/etc/uniway.spec"
+        version = "3.2.10"
+    [[versions.updates]]
+        target_version = "3.2.9"
+        new_version = "3.2.10"
+        modules = ["uniway"]
+
+# v3.2.11
+[[versions]]
+    version = "3.2.11"
+    [[versions.modules]]
+        name = "uniway"
+        commit = "v3.2.11"
+        spec = "uniway/etc/uniway.spec"
+        version = "3.2.11"
+    [[versions.updates]]
+        target_version = "3.2.10"
+        new_version = "3.2.11"
+        modules = ["uniway"]

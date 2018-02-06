@@ -1,0 +1,24 @@
+#!/bin/sh
+
+if [ -n $1 ];then
+	eth=$1
+else
+	exit 1
+fi
+
+#rb=$(/sbin/ifconfig $eth|awk '/bytes/{print $2}'|awk -F: '{print $2}')
+#sb=$(/sbin/ifconfig $eth|awk '/bytes/{print $6}'|awk -F: '{print $2}')
+rb=$(/sbin/ifconfig $eth|sed -n 5p|awk '{print $5}')
+sb=$(/sbin/ifconfig $eth|sed -n 7p|awk '{print $5}')
+
+sleep 2
+
+#/sbin/ifconfig $eth|awk '/bytes/{print $2}'|awk -v rb1=$rb -F: '{printf "%.2f\n",($2-rb1)/(1024*2)}'
+#/sbin/ifconfig $eth|awk '/bytes/{print $6}'|awk -v sb1=$sb -F: '{printf "%.2f\n",($2-sb1)/(1024*2)}'
+rb1=$(/sbin/ifconfig $eth|sed -n 5p|awk '{print $5}')
+sb1=$(/sbin/ifconfig $eth|sed -n 7p|awk '{print $5}')
+
+send=$((($sb1-$sb)/(1024*1024*2)*8))
+echo $send
+rcv=$((($rb1-$rb)/(1024*1024*2)*8))
+echo $rcv

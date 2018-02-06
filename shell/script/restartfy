@@ -1,0 +1,9 @@
+#!/bin/sh
+
+stopfy
+
+sleep 1
+
+startfy
+
+

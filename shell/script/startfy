@@ -1,0 +1,38 @@
+#!/bin/sh
+
+info="调度进程(fychmanager) 流控进程(fyflowcontrol) FTP管理主进程(fyftpmanager) FTP服务进程(fyftpserver) 文件同步进程(fyfilesync) 流管理进程(fystreamanager) SFTP管理主进程(fysftpmanager) SMB管理主进程(fysmbmanager) NFS管理主进程(fynfsmanager) 告警进程(fysysmonitor)"
+prog="fychmanager fyflowcontrol fyftpmanager fyftpserver fyfilesync fystreamanager fysftpmanager fysmbmanager fynfsmanager fysysmonitor"
+
+ipos=0
+for i in $info
+do
+	echo  "启动" "$i" "..."
+	jpos=0
+	for j in $prog
+	do
+		if [ $ipos -ne $jpos ] ; then
+#			jpos=`expr $jpos + 1`
+			((jpos++))
+			continue
+		else
+			$j start > /dev/null 2>&1
+			sleep 2
+			echo "..."
+			number=`ps -u $LOGNAME | grep -c "[ ]$j\$"`
+			if [ $number = 0 ] ; then
+				echo "启动程序 $j 失败"
+			fi
+			break
+		fi
+	done
+	echo "启动程序 $j 成功"
+#	ipos=`expr $ipos + 1`
+	((ipos++))
+done
+
+echo "..."
+
+echo "进程检查"
+ps -ef|grep $LOGNAME|grep fy
+
+

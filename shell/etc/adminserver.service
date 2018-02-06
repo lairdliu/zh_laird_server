@@ -1,0 +1,13 @@
+[Unit]
+SourcePath=/opt/jdwa/bin/adminserver
+
+[Service]
+Type=simple
+#ExecStart=/usr/bin/java -jar /opt/jetty-distribution-9.2.10.v20150310/start.jar -Djetty.base=/opt/jdwa/share/jetty 
+ExecStart=/opt/jdwa/bin/adminserver
+Restart=on-abort
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target
+
