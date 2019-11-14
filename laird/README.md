@@ -1,5 +1,0 @@
-# laird
-my program
-modify
-
-
