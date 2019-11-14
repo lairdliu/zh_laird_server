@@ -1,9 +1,0 @@
-#!/bin/sh
-
-prog="fychmanager fyflowcontrol fyftpmanager fyftpserver fyfilesync fystreamanager fycustproto fysftpmanager fysmbmanager fynfsmanager fyhost fysysmonitor"
-
-for j in $prog
-do
-    echo -n "0000" > /root/.${j}id
-done
-

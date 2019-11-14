@@ -1,4 +1,0 @@
-#!/bin/sh
-source /root/.bash_profile
-/opt/jdwa/bin/adminserver stop
-

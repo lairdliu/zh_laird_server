@@ -1,6 +1,0 @@
-include
-src
-third_part/clamav/include
-.
-obj/server
-obj
