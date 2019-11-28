@@ -4,7 +4,8 @@ project(zh_laird_server)
 set(CMAKE_CXX_STANDARD 14)
 
 include_directories(zh_server/src
-        zh_server/src/include)
+        zh_server/src/include
+        zh_server/src/common)
 
 add_executable(zh_laird_server
         zh_server/src/include/protocol.h

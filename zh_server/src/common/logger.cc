@@ -5,7 +5,6 @@
 #include<unistd.h>
 
 namespace cmhi_iov {
-    
     std::ofstream Logger::m_default_log_file_;
     
     //日志保存规则：按照次数保存10次日志，每次采用到记法，需要检查文件是否存在
@@ -64,8 +63,8 @@ namespace cmhi_iov {
     }
     
     std::ostream& Logger::add ( const ELogLevel log_level ,const char * msg ,... ) {
+
         //控制文件大小： 检车文件大小，若文件大于100M重新初始化文件
-       
         if(m_default_log_file_.tellp ()>(1024*1024*10))
         {
             std::cout <<"size:"<<m_default_log_file_.tellp ()<<std::endl;
@@ -84,13 +83,7 @@ namespace cmhi_iov {
             va_end( args );
             buff=temp_buff;
         }
-        #if 0
-        time_t timep;
-        time (&timep);
-        char tmp[64];
-        strftime(tmp, sizeof(tmp), "%Y-%m-%d %H:%M:%S.%f", localtime(&timep));
-        #endif
-        
+
         struct timeval tv;
         gettimeofday ( & tv ,NULL );
         struct tm * pTime;

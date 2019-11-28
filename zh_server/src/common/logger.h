@@ -14,7 +14,14 @@
 #include <cstdlib>
 #include <stdint.h>
 #include <stdarg.h>
-#include "common_types.h"
+
+enum ELogLevel{
+    kLogLevelAll,
+    kLogLevelDebug,
+    kLogLevelInfo,
+    kLogLevelWarn,
+    kLogLevelError
+};
 
 namespace cmhi_iov{
 
@@ -36,7 +43,6 @@ private:
 
    static std::ofstream m_default_log_file_;                 // 调试日志的输出流
 };
-
 
 #define CCLog(_log_level, _str, ...) \
 do \

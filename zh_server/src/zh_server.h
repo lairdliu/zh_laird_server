@@ -17,12 +17,12 @@
 #include<arpa/inet.h>
 #include<sys/epoll.h>
 #include<errno.h>
-//#include"protocol.h"
+#include"protocol.h"
 
 #define PORT 6666   //服务器端口
 #define LISTEN_SIZE 1023   //连接请求队列的最大长度
 #define EPOLL_SIZE  1023   //epoll监听客户端的最大数目
-
+const std::string CurrentVersion="1.5.53.00";
 class zh_server {
 public:
 

@@ -43,12 +43,12 @@ struct File_data
     unsigned char buffer[1024]; //文件内容
 };
 
-void my_err(const char *err_string,int line)  //自定义错误函数
-{
-    std::cerr<<"line:"<<line<<std::endl; //输出错误发生在第几行
-    perror(err_string);       //输出错误信息提示
-    exit(1);
-}
+//void my_err(const char *err_string,int line)  //自定义错误函数
+//{
+//    std::cerr<<"line:"<<line<<std::endl; //输出错误发生在第几行
+//    perror(err_string);       //输出错误信息提示
+//    exit(1);
+//}
 
 #endif
 

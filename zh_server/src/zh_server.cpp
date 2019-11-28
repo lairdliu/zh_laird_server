@@ -3,21 +3,32 @@
 //
 
 #include "zh_server.h"
+#include "logger.h"
+
 using namespace std;
+using namespace cmhi_iov;
 
 zh_server::zh_server()  //构造函数
 {
     //创建一个套接字
+    Logger logger;
+    string log_file = "/default.log";
+    logger.init_logger(log_file);
+    Logger::add(kLogLevelInfo, "CurrentVersion: %s",CurrentVersion.c_str());
+    //CCLog(kLogLevelInfo, "CurrentVersion: %s",CurrentVersion.c_str());
+
     sock_fd=socket(AF_INET,SOCK_STREAM,0);
     if(sock_fd<0)
     {
-        my_err("socket",__LINE__);
+        //CCLog(kLogLevelError, "update chat message guid error");
+        //my_err("socket",__LINE__);
     }
     //设置该套接字使之可以重新绑定端口
     int optval=1;
     if(setsockopt(sock_fd,SOL_SOCKET,SO_REUSEADDR,(void*)&optval,sizeof(int))<0)
     {
-        my_err("setsock",__LINE__);
+		//CCLog(kLogLevelError, "update chat message guid error: %d",__LINE__);
+        //my_err("setsock",__LINE__);
     }
     //初始化服务器端地址结构
     memset(&serv_addr,0,sizeof(struct sockaddr_in));
@@ -28,12 +39,14 @@ zh_server::zh_server()  //构造函数
     serv_addr.sin_addr.s_addr=htonl(INADDR_ANY);
     if(bind(sock_fd,(struct sockaddr*)&serv_addr,sizeof(struct sockaddr_in))<0)
     {
-        my_err("bind",__LINE__);
+		//CCLog(kLogLevelError, "update chat message guid error: %d",__LINE__);
+        //my_err("bind",__LINE__);
     }
     //将套接字转化为监听套接字
     if(listen(sock_fd,LISTEN_SIZE)<0)
     {
-        my_err("listen",__LINE__);
+		//CCLog(kLogLevelError, "update chat message guid error: %d",__LINE__);
+        //my_err("listen",__LINE__);
     }
 
     cli_len=sizeof(struct sockaddr_in);
@@ -43,13 +56,15 @@ zh_server::zh_server()  //构造函数
     epollfd=epoll_create(EPOLL_SIZE);
     if(epollfd==-1)
     {
-        my_err("epollfd",__LINE__);
+		//CCLog(kLogLevelError, "update chat message guid error: %d",__LINE__);
+        //my_err("epollfd",__LINE__);
     }
     event.events = EPOLLIN;
     event.data.fd = sock_fd;
     if(epoll_ctl(epollfd,EPOLL_CTL_ADD,sock_fd,&event)<0)
     {
-        my_err("epoll_ctl",__LINE__);
+		//CCLog(kLogLevelError, "update chat message guid error: %d",__LINE__);
+        //my_err("epoll_ctl",__LINE__);
     }
 
 }
@@ -65,13 +80,15 @@ void zh_server::acceptClient()      //接受客户端连接请求
     conn_fd=accept(sock_fd,(struct sockaddr*)&cli_addr,&cli_len);
     if(conn_fd<0)
     {
-        my_err("accept",__LINE__);
+		//CCLog(kLogLevelError, "update chat message guid error: %d",__LINE__);
+        //my_err("accept",__LINE__);
     }
     event.events = EPOLLIN | EPOLLRDHUP; //监听连接套接字的可读和退出
     event.data.fd = conn_fd;
     if(epoll_ctl(epollfd,EPOLL_CTL_ADD,conn_fd,&event)<0) //将新连接的套接字加入监听
     {
-        my_err("epoll",__LINE__);
+		//CCLog(kLogLevelError, "update chat message guid error: %d",__LINE__);
+        //my_err("epoll",__LINE__);
     }
     cout<<"a connet is connected,ip is "<<inet_ntoa(cli_addr.sin_addr)<<endl;
 }
@@ -94,7 +111,6 @@ bool zh_server::dealwithpacket(int conn_fd,unsigned char *recv_data,uint16_t wOp
     {
         File_message *file_message=(File_message*)recv_data;
         strcat(file_message->filename,".down");
-
 
         if((fd=open(file_message->filename,O_RDWR|O_APPEND|O_CREAT,0777))<0)
         {
@@ -132,7 +148,6 @@ bool zh_server::server_recv(int conn_fd)  //接收数据函数
     int datasize;     //数据总大小
     unsigned char recv_buffer[10000];  //接收数据的buffer
 
-
     memset(recv_buffer,0,sizeof(recv_buffer));  //初始化接收buffer
 
 
@@ -148,14 +163,9 @@ bool zh_server::server_recv(int conn_fd)  //接收数据函数
 
     }
 
-
-
     NetPacketHeader *phead=(NetPacketHeader*)recv_buffer;
     packersize=phead->wDataSize;  //数据包大小
     datasize=packersize-sizeof(NetPacketHeader);     //数据总大小
-
-
-
 
     while(sum_recvsize!=packersize)
     {
@@ -168,11 +178,7 @@ bool zh_server::server_recv(int conn_fd)  //接收数据函数
         sum_recvsize+=nrecvsize;
     }
 
-
     dealwithpacket(conn_fd,(unsigned char*)(phead+1),phead->wOpcode,datasize);  //处理接收到的数据
-
-
-
 }
 
 void zh_server::run()  //主执行函数
