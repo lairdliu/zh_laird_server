@@ -3,20 +3,16 @@
 //
 
 #include "zh_server.h"
-#include "logger.h"
+#include "cib_log.h"
 
 using namespace std;
-using namespace cmhi_iov;
 
 zh_server::zh_server()  //构造函数
 {
     //创建一个套接字
-    Logger logger;
-    string log_file = "/default.log";
-    logger.init_logger(log_file);
-    Logger::add(kLogLevelInfo, "CurrentVersion: %s",CurrentVersion.c_str());
-    //CCLog(kLogLevelInfo, "CurrentVersion: %s",CurrentVersion.c_str());
-
+    cib_tools::CibLog log;
+    log.log_init("./");
+    CIBLOG(cib_tools::CibLog::INFO,"start ---");
     sock_fd=socket(AF_INET,SOCK_STREAM,0);
     if(sock_fd<0)
     {

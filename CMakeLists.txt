@@ -9,6 +9,8 @@ include_directories(zh_server/src
 
 add_executable(zh_laird_server
         zh_server/src/include/protocol.h
-        zh_server/src/server.cpp
+		zh_server/src/common/cib_log.cpp
+		zh_server/src/common/cib_log.h
+		zh_server/src/server.cpp
         zh_server/src/zh_server.cpp
         zh_server/src/zh_server.h)
